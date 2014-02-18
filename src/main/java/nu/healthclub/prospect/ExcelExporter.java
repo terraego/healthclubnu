@@ -127,6 +127,12 @@ public class ExcelExporter {
 			String getValue(Prospect p) {
 				return p.getRemark();
 			}
+		},
+		member {
+			@Override
+			String getValue(Prospect p) {
+				return Boolean.toString(p.isMember());
+			}
 		};
 
 		abstract String getValue(Prospect p);

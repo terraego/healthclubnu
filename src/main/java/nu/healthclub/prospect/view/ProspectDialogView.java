@@ -58,6 +58,8 @@ public class ProspectDialogView extends SaveUpdateDialogView<Prospect> implement
 
 	private JDateChooser txtDateEntry;
 	private JDateChooser txtDateBirth;
+	private JRadioButton rdbtnMemberYes;
+	private JRadioButton rdbtnMemberNo;
 
 	/**
 	 * Create the panel.
@@ -107,6 +109,10 @@ public class ProspectDialogView extends SaveUpdateDialogView<Prospect> implement
 		btnGrpPastSporting.add(this.rdbtnPastSportingYes = new JRadioButton("Ja"));
 		btnGrpPastSporting.add(this.rdbtnPastSportingNo = new JRadioButton("Nee"));
 
+		ButtonGroup btnGrpMember = new ButtonGroup();
+		btnGrpMember.add(this.rdbtnMemberYes = new JRadioButton("Ja"));
+		btnGrpMember.add(this.rdbtnMemberNo = new JRadioButton("Nee"));
+
 		JPanel panelHeader = new JPanel(new MigLayout("", "[][][][grow]", "[]"));
 		panelHeader.add(new JLabel("Datum:"), "cell 0 0");
 		panelHeader.add(txtDateEntry, "cell 1 0");
@@ -119,7 +125,7 @@ public class ProspectDialogView extends SaveUpdateDialogView<Prospect> implement
 		        txtFirstName, txtLastName, txtAddress, txtPostalCode, txtCity, txtDateBirth,
 		        txtDateBirth.getCalendarButton(), txtEmail, txtPhoneHome, txtPhoneMobile, txtPhoneWork }));
 		panelGeneral.setBorder(BorderFactory.createTitledBorder("Algemeen"));
-		panelGeneral.setLayout(new MigLayout("", "[][grow][][grow]", "[][][][][]"));
+		panelGeneral.setLayout(new MigLayout("", "[][100px:n,grow][][100px:n,grow]", "[][][][][]"));
 		panelGeneral.add(new JLabel("Voornaam:"), "cell 0 0,alignx trailing");
 		panelGeneral.add(txtFirstName, "cell 1 0,growx");
 		panelGeneral.add(new JLabel("Geboortedatum:"), "cell 2 0");
@@ -161,16 +167,20 @@ public class ProspectDialogView extends SaveUpdateDialogView<Prospect> implement
 		panelMotivation.add(txtCurrentSport, "cell 1 3,growx");
 		panelMotivation.add(txtPastSport, "cell 1 4,growx");
 
-		JPanel panelConversion = new JPanel(new MigLayout("", "[][grow]", "[grow]"));
+		JPanel panelConversion = new JPanel(new MigLayout("", "[][grow]", "[][grow]"));
 		panelConversion.setBorder(BorderFactory.createTitledBorder("Overig"));
-		panelConversion.add(new JLabel("Opmerkingen (waarom wel of geen lid):"), "cell 0 0");
-		panelConversion.add(new JScrollPane(txtConversionMotivation), "cell 1 0,grow");
+		panelConversion.add(new JLabel("Lid geworden:"), "cell 0 0");
+		panelConversion.add(rdbtnMemberYes, "flowx,cell 1 0");
+		panelConversion.add(new JLabel("Opmerkingen (waarom wel of geen lid):"), "cell 0 1");
+		panelConversion.add(new JScrollPane(txtConversionMotivation), "cell 1 1,grow");
 
 		setLayout(new MigLayout("", "[grow]", "[][][][grow][]"));
 		add(panelHeader, "cell 0 0,grow");
 		add(panelGeneral, "cell 0 1,grow");
 		add(panelMotivation, "cell 0 2,grow");
 		add(panelConversion, "cell 0 3,grow");
+
+		panelConversion.add(rdbtnMemberNo, "cell 1 0");
 	}
 
 	private void initPanel() {
@@ -212,6 +222,14 @@ public class ProspectDialogView extends SaveUpdateDialogView<Prospect> implement
 			this.rdbtnPastSportingYes.setSelected(true);
 			this.txtPastSport.setEnabled(true);
 			this.txtPastSport.setText(pastSport);
+		}
+
+		if (getModel().isMember()) {
+			this.rdbtnMemberYes.setSelected(true);
+			this.rdbtnMemberNo.setSelected(false);
+		} else {
+			this.rdbtnMemberYes.setSelected(false);
+			this.rdbtnMemberNo.setSelected(true);
 		}
 
 		String ref = getModel().getReference();
@@ -278,6 +296,7 @@ public class ProspectDialogView extends SaveUpdateDialogView<Prospect> implement
 
 		getModel().setMotivation(txtMotivation.getText());
 		getModel().setRemark(txtConversionMotivation.getText());
+		getModel().setMember(rdbtnMemberYes.isSelected());
 		getModel().setEntryDate(txtDateEntry.getDate());
 		getModel().setBirthDate(txtDateBirth.getDate());
 	}

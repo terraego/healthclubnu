@@ -8,8 +8,8 @@ import com.google.code.morphia.annotations.Id;
 
 @Entity
 public class Prospect implements Serializable {
-	
-    private static final long serialVersionUID = -6824138811288499421L;
+
+	private static final long serialVersionUID = -6824138811288499421L;
 
 	@Id
 	private String id;
@@ -31,6 +31,7 @@ public class Prospect implements Serializable {
 	private String reference;
 	private String motivation;
 	private String remark;
+	private boolean member;
 
 	public Prospect() {
 
@@ -178,5 +179,13 @@ public class Prospect implements Serializable {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public boolean isMember() {
+		return member;
+	}
+
+	public void setMember(boolean member) {
+		this.member = member;
 	}
 }

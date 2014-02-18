@@ -1,5 +1,6 @@
 package nu.healthclub.prospect.controller;
 
+import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 
@@ -19,6 +20,8 @@ import nu.healthclub.prospect.view.ProspectTableView;
 import nu.healthclub.prospect.view.ProspectView;
 
 public class ProspectController {
+
+	public static final Dimension MINIMUM_SIZE = new Dimension(525, 600);
 
 	private TableController<Prospect> tableController;
 	private ProspectView view;
@@ -58,6 +61,7 @@ public class ProspectController {
 		        .setTitle("Voeg een nieuwe klant toe")
 		        .setIcon(Images.ICON_PROGRAM)
 		        .setOwner(view)
+		        .setMinimumSize(MINIMUM_SIZE)
 		        .buildDialog();
 		dialog.setVisible(true);
 
@@ -83,6 +87,7 @@ public class ProspectController {
 		        .setTitle("Wijzig een bestaande klant")
 		        .setIcon(Images.ICON_PROGRAM)
 		        .setOwner(view)
+		        .setMinimumSize(MINIMUM_SIZE)
 		        .buildDialog();
 		dialog.setVisible(true);
 

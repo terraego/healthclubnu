@@ -18,12 +18,7 @@ public class ProspectTableView extends TableViewDefinition {
 		return prospect.getLastName();
 	}
 
-	@Column(key = "birthdate", title = "Geboortedatum", order = 3)
-	public Date getBirthDate(Prospect prospect) {
-		return prospect.getBirthDate();
-	}
-
-	@Column(key = "entrydate", title = "Datum langsgeweest", order = 4)
+	@Column(key = "entrydate", title = "Datum langsgeweest", order = 3)
 	public Date getEntryDate(Prospect prospect) {
 		return prospect.getEntryDate();
 	}
