@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<descriptors>
+	<object class="nu.healthclub.prospect.model.Prospect">
+		<property name="id" id="true" auto="true" />
+		<property name="entryDate" />
+		<property name="birthDate" />
+		<property name="advisor" />
+		<property name="firstName" />
+		<property name="lastName" />
+		<property name="address" />
+		<property name="postalCode" />
+		<property name="city" />
+		<property name="email" />
+		<property name="phoneHome" />
+		<property name="phoneWork" />
+		<property name="phoneMobile" />
+		<property name="currentSport" />
+		<property name="pastSport" />
+		<property name="reference" />
+		<property name="motivation" />
+		<property name="remark" />
+	</object>
+</descriptors>

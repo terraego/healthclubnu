@@ -1,0 +1,39 @@
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\Maarten\workspace\customer-prospect\target\customer-prospect-0.0.1.jar</jar>
+  <outfile>C:\Users\Maarten\Desktop\healthclub.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon>C:\Users\Maarten\workspace\customer-prospect\src\main\resources\icons\logo_small.ico</icon>
+  <singleInstance>
+    <mutexName>healthclub-prospect-mutex</mutexName>
+    <windowTitle></windowTitle>
+  </singleInstance>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <minVersion>1.6.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+  </jre>
+  <splash>
+    <file>C:\Users\Maarten\workspace\customer-prospect\src\main\resources\images\splash.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>30</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+  <messages>
+    <startupErr>Er is een fout opgetreden tijdens het opstarten.</startupErr>
+    <bundledJreErr>Kon de gebundelde runtime niet vinden.</bundledJreErr>
+    <jreVersionErr>Deze applicatie maakt gebruik van java, installeer deze eerst aub.</jreVersionErr>
+    <launcherErr>Er is een versie van java geinstalleerd volgens windows, maar de applicatie kan hem niet vinden. Installeer java opnieuw aub.</launcherErr>
+    <instanceAlreadyExistsMsg>De healthclub applicatie draait al!</instanceAlreadyExistsMsg>
+  </messages>
+</launch4jConfig>
