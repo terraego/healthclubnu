@@ -25,6 +25,8 @@ public class ProspectView extends JPanel implements ActionListener {
 	private JButton btnEditProspect;
 	private JButton btnDeleteProspect;
 	private JButton btnExport;
+	private JButton btnAbout;
+	private JButton btnRefresh;
 
 	public ProspectView(ProspectController controller) {
 		this.controller = controller;
@@ -43,13 +45,18 @@ public class ProspectView extends JPanel implements ActionListener {
 		this.btnDeleteProspect.addActionListener(this);
 		this.btnExport = new JButton("Exporteer gegevens");
 		this.btnExport.addActionListener(this);
+		this.btnRefresh = new JButton("Ververs lijst");
+		this.btnRefresh.addActionListener(this);
+		this.btnAbout = new JButton(Images.ICON_ABOUT);
+		this.btnAbout.addActionListener(this);
 
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setLayout(new MigLayout("", "[][][][grow][]", "[23px]"));
+		JPanel buttonPanel = new JPanel(new MigLayout("", "[][][][][][grow][]", "[23px]"));
 		buttonPanel.add(btnAddProspect, "cell 0 0,alignx left,aligny top");
 		buttonPanel.add(btnEditProspect, "cell 1 0");
 		buttonPanel.add(btnDeleteProspect, "cell 2 0");
-		buttonPanel.add(btnExport, "cell 4 0");
+		buttonPanel.add(btnRefresh, "cell 3 0");
+		buttonPanel.add(btnAbout, "cell 4 0");
+		buttonPanel.add(btnExport, "cell 6 0");
 
 		JPanel panelHeader = new JPanel();
 		panelHeader.setBackground(Color.BLACK);
@@ -73,6 +80,10 @@ public class ProspectView extends JPanel implements ActionListener {
 			this.controller.deleteSelectedProspect();
 		} else if (e.getSource() == btnExport) {
 			this.controller.exportProspects();
+		} else if (e.getSource() == btnRefresh) {
+			this.controller.updateView();
+		} else if (e.getSource() == btnAbout) {
+			this.controller.about();
 		}
 	}
 }

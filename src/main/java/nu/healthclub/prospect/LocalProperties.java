@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -93,6 +94,21 @@ public class LocalProperties {
 		}
 	}
 
+	public void save() throws IOException {
+		File file = locatePropertiesFile();
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter(file);
+			this.properties.store(writer, "Used for the healthclub.nu prospect app");
+		} catch (IOException e) {
+			throw e;
+		} finally {
+			if (writer != null) {
+				writer.close();
+			}
+		}
+	}
+
 	public void createDefault() throws IOException {
 		this.properties.put(KEY_SERVER_ADDRESS, DEFAULT_VALUE_SERVER_ADDRESS);
 		this.properties.put(KEY_SERVER_PORT, DEFAULT_VALUE_SERVER_PORT);
@@ -102,7 +118,7 @@ public class LocalProperties {
 		OutputStream stream = null;
 		try {
 			stream = new FileOutputStream(locatePropertiesFile());
-			this.properties.store(stream, "used for the healthclub.nu prospect app");
+			this.properties.store(stream, "Used for the healthclub.nu prospect app");
 		} catch (IOException e) {
 			throw e;
 		} finally {
@@ -118,5 +134,9 @@ public class LocalProperties {
 
 	public String getProperty(String key) {
 		return this.properties.getProperty(key);
+	}
+
+	public void putProperty(String key, String value) {
+		this.properties.put(key, value);
 	}
 }

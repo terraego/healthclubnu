@@ -24,6 +24,7 @@ public class ProspectController {
 	public static final Dimension MINIMUM_SIZE = new Dimension(525, 600);
 
 	private TableController<Prospect> tableController;
+	private AboutController aboutController;
 	private ProspectView view;
 
 	private final ProspectService service;
@@ -31,6 +32,7 @@ public class ProspectController {
 	public ProspectController(ProspectService service) {
 		this.service = service;
 		this.tableController = new TableController<Prospect>(new ProspectTableView(), null);
+		this.aboutController = new AboutController();
 
 		this.view = new ProspectView(this);
 
@@ -121,6 +123,10 @@ public class ProspectController {
 		}
 	}
 
+	public void about() {
+		this.aboutController.showView(view);
+	}
+
 	public void exportProspects() {
 		ExcelExporter exporter = new ExcelExporter();
 
@@ -160,4 +166,5 @@ public class ProspectController {
 
 		return null;
 	}
+
 }

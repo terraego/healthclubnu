@@ -30,7 +30,12 @@ public class Launcher {
 	static ProspectService createService() {
 		LocalProperties props = LocalProperties.getInstance();
 		String serverAddr = props.getProperty(LocalProperties.KEY_SERVER_ADDRESS);
-		int port = Integer.parseInt(props.getProperty(LocalProperties.KEY_SERVER_PORT));
+		int port = 27017;
+		try {
+			port = Integer.parseInt(props.getProperty(LocalProperties.KEY_SERVER_PORT));
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
 		String serverUser = props.getProperty(LocalProperties.KEY_SERVER_USER);
 		String serverPass = props.getProperty(LocalProperties.KEY_SERVER_PASS);
 

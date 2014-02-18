@@ -9,6 +9,7 @@ public class Images {
 	public static final ImageIcon ICON_APPROVE_SMALL = safeLoad("icons/16x16/Approve.png");
 	public static final ImageIcon ICON_CANCEL_SMALL = safeLoad("icons/16x16/Cancel.png");
 	public static final ImageIcon ICON_PROGRAM = safeLoad("icons/16x16/Icon.png");
+	public static final ImageIcon ICON_ABOUT = safeLoad("icons/16x16/About.png");
 
 	public static final ImageIcon IMAGE_LOGO_SMALL = safeLoad("images/logo_small.png");
 	public static final ImageIcon IMAGE_LOGO = safeLoad("images/logo.png");
