@@ -1,7 +1,7 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>C:\Users\Maarten\workspace\customer-prospect\target\customer-prospect-0.0.1.jar</jar>
+  <jar>C:\workspace\healthclubnu\target\customer-prospect-0.0.1.jar</jar>
   <outfile>C:\Users\Maarten\Desktop\healthclub.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
