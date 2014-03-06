@@ -32,6 +32,7 @@ public class Prospect implements Serializable {
 	private String motivation;
 	private String remark;
 	private boolean member;
+	private boolean receivingNewsLetter;
 
 	public Prospect() {
 
@@ -187,5 +188,13 @@ public class Prospect implements Serializable {
 
 	public void setMember(boolean member) {
 		this.member = member;
+	}
+
+	public boolean isReceivingNewsLetter() {
+		return receivingNewsLetter;
+	}
+
+	public void setReceivingNewsLetter(boolean receivingNewsLetter) {
+		this.receivingNewsLetter = receivingNewsLetter;
 	}
 }

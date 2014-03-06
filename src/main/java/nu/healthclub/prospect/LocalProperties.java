@@ -17,7 +17,7 @@ public class LocalProperties {
 	public static final String KEY_SERVER_USER = "server_user";
 	public static final String KEY_SERVER_PASS = "server_pass";
 
-	public static final String DEFAULT_VALUE_SERVER_ADDRESS = "176.31.185.109";
+	public static final String DEFAULT_VALUE_SERVER_ADDRESS = "192.168.1.220";
 	public static final String DEFAULT_VALUE_SERVER_PORT = "27017";
 	public static final String DEFAULT_VALUE_SERVER_USER = "user";
 	public static final String DEFAULT_VALUE_SERVER_PASS = "pass";

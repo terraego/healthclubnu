@@ -21,7 +21,7 @@ import nu.healthclub.prospect.view.ProspectView;
 
 public class ProspectController {
 
-	public static final Dimension MINIMUM_SIZE = new Dimension(525, 600);
+	public static final Dimension MINIMUM_SIZE = new Dimension(525, 700);
 
 	private TableController<Prospect> tableController;
 	private AboutController aboutController;

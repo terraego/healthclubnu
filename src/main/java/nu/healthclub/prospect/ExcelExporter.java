@@ -29,13 +29,21 @@ public class ExcelExporter {
 		entryDate {
 			@Override
 			String getValue(Prospect p) {
-				return format.format(p.getEntryDate());
+				if (p.getEntryDate() == null) {
+					return null;
+				} else {
+					return format.format(p.getEntryDate());
+				}
 			}
 		},
 		birthDate {
 			@Override
 			String getValue(Prospect p) {
-				return format.format(p.getBirthDate());
+				if (p.getBirthDate() == null) {
+					return null;
+				} else {
+					return format.format(p.getBirthDate());
+				}
 			}
 		},
 		advisor {
@@ -132,6 +140,12 @@ public class ExcelExporter {
 			@Override
 			String getValue(Prospect p) {
 				return Boolean.toString(p.isMember());
+			}
+		},
+		newsletter {
+			@Override
+			String getValue(Prospect p) {
+				return Boolean.toString(p.isReceivingNewsLetter());
 			}
 		};
 

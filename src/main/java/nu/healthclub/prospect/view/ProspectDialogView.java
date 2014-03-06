@@ -60,6 +60,8 @@ public class ProspectDialogView extends SaveUpdateDialogView<Prospect> implement
 	private JDateChooser txtDateBirth;
 	private JRadioButton rdbtnMemberYes;
 	private JRadioButton rdbtnMemberNo;
+	private JRadioButton rdbtnReceiveNewsletterYes;
+	private JRadioButton rdbtnReceiveNewsletterNo;
 
 	/**
 	 * Create the panel.
@@ -113,6 +115,10 @@ public class ProspectDialogView extends SaveUpdateDialogView<Prospect> implement
 		btnGrpMember.add(this.rdbtnMemberYes = new JRadioButton("Ja"));
 		btnGrpMember.add(this.rdbtnMemberNo = new JRadioButton("Nee"));
 
+		ButtonGroup btnGrpReceiveNewsLetter = new ButtonGroup();
+		btnGrpReceiveNewsLetter.add(this.rdbtnReceiveNewsletterYes = new JRadioButton("Ja"));
+		btnGrpReceiveNewsLetter.add(this.rdbtnReceiveNewsletterNo = new JRadioButton("Nee"));
+
 		JPanel panelHeader = new JPanel(new MigLayout("", "[][][][grow]", "[]"));
 		panelHeader.add(new JLabel("Datum:"), "cell 0 0");
 		panelHeader.add(txtDateEntry, "cell 1 0");
@@ -147,7 +153,7 @@ public class ProspectDialogView extends SaveUpdateDialogView<Prospect> implement
 		panelGeneral.add(new JLabel("Telefoon werk:"), "cell 2 4,alignx trailing");
 		panelGeneral.add(txtPhoneWork, "cell 3 4,growx");
 
-		JPanel panelMotivation = new JPanel(new MigLayout("", "[][grow]", "[][][grow][][]"));
+		JPanel panelMotivation = new JPanel(new MigLayout("", "[][grow]", "[][][70px:n,grow][][]"));
 		panelMotivation.setBorder(BorderFactory.createTitledBorder("Motivatie"));
 		panelMotivation.add(new JLabel("Hoe heeft u over ons gehoord:"), "cell 0 0");
 		panelMotivation.add(rdbtnViaVia, "flowx,cell 1 0");
@@ -167,12 +173,16 @@ public class ProspectDialogView extends SaveUpdateDialogView<Prospect> implement
 		panelMotivation.add(txtCurrentSport, "cell 1 3,growx");
 		panelMotivation.add(txtPastSport, "cell 1 4,growx");
 
-		JPanel panelConversion = new JPanel(new MigLayout("", "[][grow]", "[][grow]"));
+		JPanel panelConversion = new JPanel(new MigLayout("", "[][grow]", "[][][70px:n,grow]"));
 		panelConversion.setBorder(BorderFactory.createTitledBorder("Overig"));
 		panelConversion.add(new JLabel("Lid geworden:"), "cell 0 0");
 		panelConversion.add(rdbtnMemberYes, "flowx,cell 1 0");
-		panelConversion.add(new JLabel("Opmerkingen (waarom wel of geen lid):"), "cell 0 1");
-		panelConversion.add(new JScrollPane(txtConversionMotivation), "cell 1 1,grow");
+		panelConversion.add(new JLabel("Wilt nieuwsbrief ontvangen:"), "cell 0 1");
+		panelConversion.add(rdbtnReceiveNewsletterYes, "flowx,cell 1 1");
+		panelConversion.add(new JLabel("Opmerkingen (waarom wel of geen lid):"), "cell 0 2");
+		panelConversion.add(new JScrollPane(txtConversionMotivation), "cell 1 2,grow");
+		panelConversion.add(rdbtnMemberNo, "cell 1 0");
+		panelConversion.add(rdbtnReceiveNewsletterNo, "cell 1 1");
 
 		setLayout(new MigLayout("", "[grow]", "[][][][grow][]"));
 		add(panelHeader, "cell 0 0,grow");
@@ -180,7 +190,6 @@ public class ProspectDialogView extends SaveUpdateDialogView<Prospect> implement
 		add(panelMotivation, "cell 0 2,grow");
 		add(panelConversion, "cell 0 3,grow");
 
-		panelConversion.add(rdbtnMemberNo, "cell 1 0");
 	}
 
 	private void initPanel() {
@@ -230,6 +239,14 @@ public class ProspectDialogView extends SaveUpdateDialogView<Prospect> implement
 		} else {
 			this.rdbtnMemberYes.setSelected(false);
 			this.rdbtnMemberNo.setSelected(true);
+		}
+
+		if (getModel().isReceivingNewsLetter()) {
+			this.rdbtnReceiveNewsletterYes.setSelected(true);
+			this.rdbtnReceiveNewsletterNo.setSelected(false);
+		} else {
+			this.rdbtnReceiveNewsletterYes.setSelected(false);
+			this.rdbtnReceiveNewsletterNo.setSelected(true);
 		}
 
 		String ref = getModel().getReference();
@@ -297,6 +314,7 @@ public class ProspectDialogView extends SaveUpdateDialogView<Prospect> implement
 		getModel().setMotivation(txtMotivation.getText());
 		getModel().setRemark(txtConversionMotivation.getText());
 		getModel().setMember(rdbtnMemberYes.isSelected());
+		getModel().setReceivingNewsLetter(rdbtnReceiveNewsletterYes.isSelected());
 		getModel().setEntryDate(txtDateEntry.getDate());
 		getModel().setBirthDate(txtDateBirth.getDate());
 	}
