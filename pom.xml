@@ -13,6 +13,10 @@
 		</repository>
 	</repositories>
 
+	<properties>
+		<java.version>1.5</java.version>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -46,9 +50,6 @@
 						<goals>
 							<goal>shade</goal>
 						</goals>
-						<configuration>
-							<minimizeJar>true</minimizeJar>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>

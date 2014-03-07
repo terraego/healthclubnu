@@ -72,7 +72,7 @@ public class Launcher {
 		ProspectController controller = new ProspectController(service);
 
 		// show application
-		JFrame frame = new JFrame("Healthclub nu");
+		JFrame frame = new JFrame("Healthclub NU");
 		frame.setIconImages(Arrays.asList(
 		        Images.IMAGE_LOGO_SMALL.getImage(),
 		        Images.ICON_PROGRAM.getImage()));
